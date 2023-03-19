@@ -1,0 +1,56 @@
+#!/bin/sh
+# vim: set filetype=sh:
+# ANSIBLE-MANAGED CONFIGURATION FILE
+# PURPOSE: print the current git branch to stdout
+# --> if no git repo in cwd, print empty string
+# --> if currently in detached head mode, print short commit hash
+# usage:
+#  ./current_git_branch.sh  [directory]
+
+get_optional_cmd_arg() {
+  if [ "${#}" -gt 0 ]; then
+    working_dir="${1}"
+  else
+    working_dir="$(pwd)"
+  fi
+}
+
+change_to_git_dir() {
+  cd "${working_dir}" || exit 1
+}
+
+exit_if_invalid_git_repo() {
+  git rev-parse --abbrev-ref HEAD > /dev/null 2>&1
+  exit_code="${?}"
+  if [ "${exit_code}" != 0 ]; then
+    printf ''
+    exit 0
+  fi
+}
+
+try_print_detached_head() {
+  git symbolic-ref --short --quiet HEAD > /dev/null 2>&1
+  exit_code="${?}"
+  if [ "${exit_code}" != 0 ]; then
+    detached_head_commit=$(git rev-parse --short HEAD)
+    printf "%s (detached)" "${detached_head_commit}"
+    exit 0
+  fi
+}
+
+print_branch_name() {
+  git_branch_name=$(git symbolic-ref --short HEAD)
+  printf "%s" "${git_branch_name}"
+  exit 0
+}
+
+main() {
+  get_optional_cmd_arg "$@"
+  change_to_git_dir "$@"
+  exit_if_invalid_git_repo "$@"
+  try_print_detached_head "$@"
+  print_branch_name "$@"
+}
+
+main "$@"
+
