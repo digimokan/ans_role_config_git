@@ -1,0 +1,3 @@
+- name: "Install git"
+  ansible.builtin.include_tasks: install/main.yml
+
