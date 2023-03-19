@@ -1,0 +1,36 @@
+- name: "Configure git settings for user '{{ git_machine_user_name }}' in '{{ git_config_path }}'"
+  ansible.builtin.template:
+    dest: "{{ git_config_path }}"
+    src: "config.j2"
+    owner: "{{ git_machine_user_name }}"
+    mode: '644'
+    force: yes
+  vars:
+    git_config_path: "{{ git_user_config_dir }}/config"
+  become: true
+  become_user: root
+
+- name: "Configure git commit msg template for user '{{ git_machine_user_name }}' in '{{ git_commit_msg_template_path }}'"
+  ansible.builtin.template:
+    dest: "{{ git_commit_msg_template_path }}"
+    src: "commit_msg_template.j2"
+    owner: "{{ git_machine_user_name }}"
+    mode: '644'
+    force: yes
+  vars:
+    git_commit_msg_template_path: "{{ git_user_config_dir }}/commit_msg_template"
+  become: true
+  become_user: root
+
+- name: "Configure global git-ignores for user '{{ git_machine_user_name }}' in '{{ git_ignores_path }}'"
+  ansible.builtin.template:
+    dest: "{{ git_ignores_path }}"
+    src: "ignore.j2"
+    owner: "{{ git_machine_user_name }}"
+    mode: '644'
+    force: yes
+  vars:
+    git_ignores_path: "{{ git_user_config_dir }}/ignore"
+  become: true
+  become_user: root
+
