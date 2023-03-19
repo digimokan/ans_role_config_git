@@ -4,3 +4,6 @@
 - name: "Configure git"
   ansible.builtin.include_tasks: config/main.yml
 
+- name: "Export utility script and cmds for other roles to use"
+  ansible.builtin.include_tasks: exports/main.yml
+

@@ -1,0 +1,15 @@
+- name: "Create utility script: '{{ script_path }}'"
+  ansible.builtin.template:
+    dest: "{{ script_path }}"
+    src: "current_git_branch.j2"
+    owner: "{{ git_machine_user_name }}"
+    mode: '755'
+    force: yes
+  become: true
+  become_user: root
+
+- name: "Export '{{ script_path }}' as 'git_cmd_current_git_branch' var, for other roles"
+  ansible.builtin.set_fact:
+    git_cmd_current_git_branch: >-
+      {{ script_path }}
+

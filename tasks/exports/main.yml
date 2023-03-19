@@ -1,0 +1,6 @@
+- name: "Export cmd_current_git_branch cmd for other roles to use"
+  ansible.builtin.include_tasks: current_git_branch.yml
+  vars:
+    script_path: "{{ git_user_scripts_dir }}/current_git_branch.sh"
+  when: export_cmd_current_git_branch
+

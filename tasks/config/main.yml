@@ -1,5 +1,5 @@
-- name: "Create user git config dir"
-  ansible.builtin.include_tasks: config_dir.yml
+- name: "Create user git config dirs"
+  ansible.builtin.include_tasks: config_dirs.yml
 
 - name: "Configure all git settings"
   ansible.builtin.include_tasks: settings.yml

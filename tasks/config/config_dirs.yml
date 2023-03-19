@@ -1,0 +1,18 @@
+- name: "Create git config dir for user '{{ git_machine_user_name }}' at '{{ git_user_config_dir }}'"
+  ansible.builtin.file:
+    path: "{{ git_user_config_dir }}"
+    state: directory
+    owner: "{{ git_machine_user_name }}"
+    mode: '755'
+  become: true
+  become_user: root
+
+- name: "Create git utility scripts dir for user '{{ git_machine_user_name }}' at '{{ git_user_scripts_dir }}'"
+  ansible.builtin.file:
+    path: "{{ git_user_scripts_dir }}"
+    state: directory
+    owner: "{{ git_machine_user_name }}"
+    mode: '755'
+  become: true
+  become_user: root
+
