@@ -1,0 +1,13 @@
+# text editor to launch for editing commit messages, etc
+git_text_editor: 'vi'
+
+# automatically convert commited files from LF (Linux-std) to CRLF (Windows-std)
+# --> 'false': leave files as-is
+# --> 'true': conv to CRLF (for Windows editing) on check-out, then back to LF on commit
+# --> 'input': check-out files as is, and always conv to LF on commit
+# refs: https://shzhangji.com/blog/2022/08/31/configure-git-line-endings-across-oses/
+git_src_conv_auto_crlf: 'input'
+
+# guard against converting binary files from CRLF to LF
+git_src_guard_safe_crlf: 'true'
+

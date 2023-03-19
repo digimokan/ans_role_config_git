@@ -1,0 +1,33 @@
+- name: "Create git config dir for user '{{ git_machine_user_name }}' at '{{ git_user_config_dir }}'"
+  ansible.builtin.file:
+    path: "{{ git_user_config_dir }}"
+    state: directory
+    owner: "{{ git_machine_user_name }}"
+    mode: '755'
+  become: true
+  become_user: root
+
+- name: "Configure git settings for user '{{ git_machine_user_name }}' in '{{ git_config_path }}'"
+  ansible.builtin.template:
+    dest: "{{ git_config_path }}"
+    src: "config.j2"
+    owner: "{{ git_machine_user_name }}"
+    mode: '644'
+    force: yes
+  vars:
+    git_config_path: "{{ git_user_config_dir }}/config"
+  become: true
+  become_user: root
+
+- name: "Configure git commit msg template for user '{{ git_machine_user_name }}' in '{{ git_commit_msg_template_path }}'"
+  ansible.builtin.template:
+    dest: "{{ git_commit_msg_template_path }}"
+    src: "commit_msg_template.j2"
+    owner: "{{ git_machine_user_name }}"
+    mode: '644'
+    force: yes
+  vars:
+    git_commit_msg_template_path: "{{ git_user_config_dir }}/commit_msg_template"
+  become: true
+  become_user: root
+

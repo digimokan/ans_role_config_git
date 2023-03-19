@@ -1,0 +1,19 @@
+# vim: set filetype=gitconfig:
+# ANSIBLE-MANAGED CONFIGURATION FILE
+
+[user]
+  name = {{ git_vcs_user_name }}
+  email = {{ git_vcs_user_email }}
+[core]
+  editor = {{ git_text_editor }}
+  autocrlf = {{ git_src_conv_auto_crlf }}
+  safecrlf = {{ git_src_guard_safe_crlf }}
+[init]
+  defaultBranch = {{ git_default_init_branch_name }}
+[advice]
+  detachedHead = {{ git_warn_detached_head }}
+[alias]
+  {{ git_show_commit_history.alias }} = {{ git_show_commit_history.cmd }}
+[commit]
+  template = {{ git_user_config_dir }}/commit_msg_template
+

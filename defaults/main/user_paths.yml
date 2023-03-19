@@ -1,0 +1,3 @@
+# user-specific main wezterm config dir
+git_user_config_dir: "/home/{{ git_machine_user_name }}/.config/git"
+

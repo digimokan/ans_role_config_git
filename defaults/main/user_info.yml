@@ -1,0 +1,3 @@
+# email address to associate with user, for commit messages
+git_vcs_user_email: "{{ git_vcs_user_name }}@users.noreply.github.com"
+

@@ -1,0 +1,5 @@
+# alias to show commit history in a colorized "tree", with one commit per line
+git_show_commit_history:
+  alias: 'hist'
+  cmd: "log --pretty=format:'%h %ad %s%d [%an]' --graph --date=short --all"
+

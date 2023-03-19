@@ -1,0 +1,6 @@
+# the branch name to assign when creating a new repo with 'init'
+git_default_init_branch_name: 'main'
+
+# warn when checking out a commit hash in "detached head" mode
+git_warn_detached_head: 'false'
+
