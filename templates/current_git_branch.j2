@@ -24,7 +24,7 @@ exit_if_invalid_git_repo() {
   exit_code="${?}"
   if [ "${exit_code}" != 0 ]; then
     printf ''
-    exit 0
+    exit 5
   fi
 }
 
