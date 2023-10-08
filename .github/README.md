@@ -53,7 +53,7 @@ Install and configure the git version control system.
        - name: "Install and configure the git version control system"
          ansible.builtin.include_role:
            name: ans_role_config_git
-           public: yes
+           public: true
          vars:
            git_machine_user_name: "user2"
            git_vcs_user_name: "my_git_handle"

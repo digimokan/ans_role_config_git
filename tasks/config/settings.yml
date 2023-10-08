@@ -4,7 +4,7 @@
     src: "config.j2"
     owner: "{{ git_machine_user_name }}"
     mode: '644'
-    force: yes
+    force: true
   vars:
     git_config_path: "{{ git_user_config_dir }}/config"
   become: true
@@ -16,7 +16,7 @@
     src: "commit_msg_template.j2"
     owner: "{{ git_machine_user_name }}"
     mode: '644'
-    force: yes
+    force: true
   vars:
     git_commit_msg_template_path: "{{ git_user_config_dir }}/commit_msg_template"
   become: true
@@ -28,7 +28,7 @@
     src: "ignore.j2"
     owner: "{{ git_machine_user_name }}"
     mode: '644'
-    force: yes
+    force: true
   vars:
     git_ignores_path: "{{ git_user_config_dir }}/ignore"
   become: true

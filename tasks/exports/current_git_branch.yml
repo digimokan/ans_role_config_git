@@ -4,7 +4,7 @@
     src: "current_git_branch.j2"
     owner: "{{ git_machine_user_name }}"
     mode: '755'
-    force: yes
+    force: true
   become: true
   become_user: root
 
